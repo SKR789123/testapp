@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React,{createContext, useContext, useDebugValue, useEffect, useRef, useState} from 'react'
 import canada from './canada1.jpg'
@@ -14,7 +13,6 @@ function App() {
 
   const myBtn = useRef(null)
 
-  const clickIt = () => myBtn.current.click()
   
   const MoodContext = createContext(moods)
 
