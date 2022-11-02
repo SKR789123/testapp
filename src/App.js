@@ -1,6 +1,21 @@
 import './App.css';
-import React,{createContext, useContext, useDebugValue, useEffect, useRef, useState} from 'react'
+import React,{createContext, useContext, useDebugValue, useEffect, useReducer, useRef, useState} from 'react'
 import canada from './canada1.jpg'
+
+
+function reducer(state,action){
+
+  switch(action.type){
+    case 'increment':
+      return state +1;
+    case 'decrement':
+      return state -1;
+    default:
+      throw new Error();
+
+  }
+
+}
 
 function App() {
 
@@ -23,6 +38,8 @@ function App() {
   
     return <p>{mood}</p>
   }
+
+  const [state, dispatch] = useReducer(reducer,0)
   
   
   return (
@@ -54,6 +71,9 @@ function App() {
         <button >
           test
         </button>
+        <p>Count {state}</p>
+        <button onClick={()=>dispatch({type:'decrement'})}>-</button>
+        <button onClick={()=>dispatch({type:'increment'})}>+</button>
       </header>
     </div>
     </MoodContext.Provider>
